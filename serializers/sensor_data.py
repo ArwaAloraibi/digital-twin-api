@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-class CommentSchema(BaseModel):
+class SensorDataSchema(BaseModel):
   id: int
   content: str
 
