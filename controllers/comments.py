@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from models.sensor_data import CommentModel
 from models.machien import TeaModel
-from serializers.comment import CommentSchema
+from serializers.sensor_data import CommentSchema
 from typing import List
 from database import get_db
 

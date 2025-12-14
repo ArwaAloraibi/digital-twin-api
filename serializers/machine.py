@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional, List
-from .comment import CommentSchema
+from .sensor_data import CommentSchema
 
 class TeaSchema(BaseModel):
   id: Optional[int] = True # This makes sure you don't have to explicitly add an id when sending json data
