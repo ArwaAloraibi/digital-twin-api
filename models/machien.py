@@ -9,7 +9,7 @@ class MachineModel(BaseModel):
 
     # Specific columns for our machine Table.
     machine_id = Column(Integer, primary_key=True, index=True)
-    status = Column(String)
+    status = Column(String, nullable=False)
 
     # Define a relationship with the CommentModel table
     sensor_data = relationship("SensorDataModel", back_populates="machine")

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, Float, ForeignKey
 from sqlalchemy.orm import relationship
 from .base import BaseModel
 
@@ -8,7 +8,6 @@ class SensorDataModel(BaseModel):
 
     __tablename__ = "sensor_data"  # The name of the table in the database
 
-    id = Column(Integer, primary_key=True, index=True)
     machine_id = Column(Integer, ForeignKey("machines.machine_id"), nullable=False)
     temperature = Column(Float)
     power_consumption_kw = Column(Float)
