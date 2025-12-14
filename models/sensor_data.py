@@ -2,13 +2,19 @@ from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from .base import BaseModel
 
+
 class SensorDataModel(BaseModel):
+  
 
-    __tablename__ = "machines_db"  # The name of the table in the database
+    __tablename__ = "sensor_data"  # The name of the table in the database
 
-    id = Column(Integer, primary_key=True, index=True)  # Unique identifier for the comment
-    content = Column(String, nullable=False)  # The text content of the comment
-
+    id = Column(Integer, primary_key=True, index=True)
+    machine_id = Column(Integer, ForeignKey("machines.machine_id"), nullable=False)
+    temperature = Column(Float)
+    power_consumption_kw = Column(Float)
+    network_latency_ms = Column(Float)
+    error_rate_pct = Column(Float)
+    efficiency_status = Column(String)
+    
     # ForeignKey establishes a connection to the teas table
-    tea_id = Column(Integer, ForeignKey('teas.id'), nullable=False)
-    tea = relationship("MachineModel", back_populates="sensorData")  # Defines the relationship to the MachineModel
+    machine = relationship("MachineModel", back_populates="sensor_data")  # Defines the relationship to the MachineModel
