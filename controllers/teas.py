@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from models.tea import TeaModel
+from models.machien import TeaModel
 from serializers.tea import TeaSchema
 from typing import List
 from database import get_db
