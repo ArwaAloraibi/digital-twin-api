@@ -1,17 +1,17 @@
-# from fastapi import APIRouter, Depends, HTTPException
-# from sqlalchemy.orm import Session
-# from models.machine import MachineModel
-# from serializers.machine import machineSchema
-# from typing import List
-# from database import get_db
+from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy.orm import Session
+from models.machine import MachineModel
+from serializers.machine import machineSchema
+from typing import List
+from database import get_db
 
-# router = APIRouter()
+router = APIRouter()
 
 
-# @router.get("/machines", response_model=List[machineSchema])
-# def get_teas(db: Session = Depends(get_db)):
-#     teas = db.query(MachineModel).all()
-#     return teas
+@router.get("/machines", response_model=List[machineSchema])
+def get_machines(db: Session = Depends(get_db)):
+    teas = db.query(MachineModel).all()
+    return teas
 
 
 
@@ -50,12 +50,3 @@
 
 
 
-# @router.delete("/teas/{tea_id}")
-# def delete_tea(tea_id: int, db: Session = Depends(get_db)):
-#     db_tea = db.query(TeaModel).filter(TeaModel.id == tea_id).first()
-#     if not db_tea:
-#         raise HTTPException(status_code=404, detail="Tea not found")
-
-#     db.delete(db_tea)  # Remove from database
-#     db.commit()  # Save changes
-#     return {"message": f"Tea with ID {tea_id} has been deleted"}
