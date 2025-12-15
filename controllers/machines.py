@@ -1,17 +1,17 @@
-from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session
-from models.machine import machineSchema
-from serializers.machine import machineSchema
-from typing import List
-from database import get_db
+# from fastapi import APIRouter, Depends, HTTPException
+# from sqlalchemy.orm import Session
+# from models.machine import MachineModel
+# from serializers.machine import machineSchema
+# from typing import List
+# from database import get_db
 
-router = APIRouter()
+# router = APIRouter()
 
 
-@router.get("/machines", response_model=List[machineSchema])
-def get_teas(db: Session = Depends(get_db)):
-    teas = db.query(machineSchema).all()
-    return teas
+# @router.get("/machines", response_model=List[machineSchema])
+# def get_teas(db: Session = Depends(get_db)):
+#     teas = db.query(MachineModel).all()
+#     return teas
 
 
 
