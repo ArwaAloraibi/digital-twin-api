@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from models.machien import machineSchema
+from models.machine import machineSchema
 from serializers.machine import machineSchema
 from typing import List
 from database import get_db
