@@ -1,7 +1,8 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, BackgroundTasks
 from sqlalchemy.orm import Session
 from models.machine import MachineModel
 from serializers.machine import machineSchema
+from services.digital_twin import DigitalTwin
 from typing import List
 from database import get_db
 
@@ -24,13 +25,18 @@ def get_single_machine(machine_id: int, db: Session = Depends(get_db)):
 
 
 
-# @router.post("/teas", response_model=TeaSchema)
-# def create_tea(tea: TeaSchema, db: Session = Depends(get_db)):
-#     new_tea = TeaModel(**tea.dict()) # Convert Pydantic model to SQLAlchemy model
-#     db.add(new_tea)
-#     db.commit() # Save to database
-#     db.refresh(new_tea) # Refresh to get the updated data (including auto-generated fields)
-#     return new_tea
+@router.post("/machines/{machine_id}/start")
+def start_machine_stream(machine_id: int, background_tasks: BackgroundTasks, db: Session = Depends(get_db)):
+    machine = db.query(MachineModel).filter(MachineModel.machine_id == machine_id).first()
+    if not machine:
+        raise HTTPException(status_code=404, detail="Machine not found")
+    
+    digital_twin = DigitalTwin(machine_id=machine_id, db=db)
+
+    background_tasks.add_task(digital_twin.start_stream)
+
+
+    return {"message": f"Digital twin stream started for machine {machine_id}"}
 
 
 
