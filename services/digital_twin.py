@@ -22,7 +22,7 @@ class DigitalTwin:
     def start_stream(self, interval_sec: float = 2.0):
         for sensor in self.sensor_data_stream:
             
-            # 1. Update machine object
+            # 1. Update machine object (triggres the update def in the machine class)
             self.machine.update(sensor)
 
             # 2. Insert sensor data into DB
