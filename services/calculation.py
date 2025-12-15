@@ -1,4 +1,11 @@
 import numpy as np
+
+
+STATUS_TO_SCORE = {
+    "Low": 50,
+    "Medium": 70,
+    "High": 90
+}
   
 class Calculation:
   
@@ -43,27 +50,37 @@ class Calculation:
         temperature = min(max((sensor.temperature - 20) / 80, 0), 1)
         error = min(max(sensor.error_rate_pct / 100, 0), 1)
         
-        # Efficiency inversely proportional to penalties
-        efficiency = max(0, 1 - (0.5 * temperature + 0.5 * error))
+        efficiency =  1 - (0.5 * temperature + 0.5 * error)
 
         return round(efficiency * 100, 1)    
     
- 
+
+    def efficiency_temperature_error_correlation(sensor_list):
+        predicted_eff = []
+        actual_eff = []
+
+        for s in sensor_list:
+            if s.efficiency_status not in STATUS_TO_SCORE:
+                continue
+
+            predicted_eff.append(
+                Calculation.calculate_efficiency(s)
+            )
+            actual_eff.append(
+                STATUS_TO_SCORE[s.efficiency_status]
+            )
+
+        if len(predicted_eff) < 2:
+            return 0.0
+
+        return round(np.corrcoef(predicted_eff, actual_eff)[0, 1], 2)
+
 
     def temperature_error_correlation(sensor_list):
-        """
-        Simple correlation between temperature and error_rate_pct 
-        Returns number between -1 and 1.
-
-        Positive → temperature increases → errors increase
-
-        Negative → temperature increases → errors decrease
-        """
-        
         temps = [s.temperature for s in sensor_list]
         errors = [s.error_rate_pct for s in sensor_list]
-        
-        if len(temps) < 2:  # correlation undefined for <2 points
+
+        if len(temps) < 2:
             return 0.0
-        
+
         return round(np.corrcoef(temps, errors)[0, 1], 2)

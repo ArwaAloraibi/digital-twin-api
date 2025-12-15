@@ -17,9 +17,10 @@ class DigitalTwin:
         # filter sensor data for this machine
         self.sensor_data_stream = [sensor for sensor in sensor_data_list if sensor.machine_id == machine_id]
         
-        
+        self.processed_data = []
     # Simulates real-time sensor streaming
     def start_stream(self, interval_sec: float = 2.0):
+        
         for sensor in self.sensor_data_stream:
             
             # 1. Update machine object (triggres the update def in the machine class)
@@ -28,12 +29,21 @@ class DigitalTwin:
             # 2. Insert sensor data into DB
             self._insert_sensor_data(sensor)
 
+            self.processed_data.append(sensor)
+
+
             # 3. Calculation
             risk = Calculation.calculate_risk(sensor)
             efficiency = Calculation.calculate_efficiency(sensor)
 
             # 4. Print or return results (later, send to frontend)
             print(f"[Machine {self.machine.machine_id}] Risk: {risk}, Efficiency: {efficiency}")
+             
+            if len(self.processed_data) >= 5:
+                corr = Calculation.efficiency_temperature_error_correlation(
+                    self.processed_data
+                )
+                print(f"   ↳ Efficiency correlation (model vs reality): {corr}")
 
             # Wait for next data point
             time.sleep(interval_sec)
