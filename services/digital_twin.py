@@ -2,7 +2,7 @@ import time
 from typing import List
 from data.machine_data import sensor_data_list, machines_list
 from services.machine import Machine
-from services.calculation import calculate_risk, calculate_efficiency
+from services.calculation import Calculation
 from database import get_db
 from models.sensor_data import SensorDataModel
 from sqlalchemy.orm import Session
@@ -28,9 +28,9 @@ class DigitalTwin:
             # 2. Insert sensor data into DB
             self._insert_sensor_data(sensor)
 
-            # 3. Calculate risk / efficiency
-            risk = calculate_risk(sensor)
-            efficiency = calculate_efficiency(sensor)
+            # 3. Calculation
+            risk = Calculation.calculate_risk(sensor)
+            efficiency = Calculation.calculate_efficiency(sensor)
 
             # 4. Print or return results (later, send to frontend)
             print(f"[Machine {self.machine.machine_id}] Risk: {risk}, Efficiency: {efficiency}")

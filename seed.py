@@ -1,5 +1,5 @@
-from sqlalchemy.orm import Session, sessionmaker
 from models.base import Base
+from sqlalchemy.orm import Session, sessionmaker
 from data.machine_data import machines_list, sensor_data_list
 from data.user_data import user_list
 from config.environment import db_URI

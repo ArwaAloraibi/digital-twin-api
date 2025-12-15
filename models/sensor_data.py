@@ -8,7 +8,9 @@ class SensorDataModel(BaseModel):
 
     __tablename__ = "sensor_data"  # The name of the table in the database
 
+    id = Column(Integer, primary_key=True)
     machine_id = Column(Integer, ForeignKey("machines.machine_id"), nullable=False)
+    status=Column(String)
     temperature = Column(Float)
     power_consumption_kw = Column(Float)
     network_latency_ms = Column(Float)
