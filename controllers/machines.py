@@ -10,17 +10,17 @@ router = APIRouter()
 
 @router.get("/machines", response_model=List[machineSchema])
 def get_machines(db: Session = Depends(get_db)):
-    teas = db.query(MachineModel).all()
-    return teas
+    machines = db.query(MachineModel).all()
+    return machines
 
 
 
-# @router.get("/teas/{tea_id}", response_model=TeaSchema)
-# def get_single_tea(tea_id: int, db: Session = Depends(get_db)):
-#     tea = db.query(TeaModel).filter(TeaModel.id == tea_id).first()
-#     if not tea:
-#         raise HTTPException(status_code=404, detail="Tea not found")
-#     return tea
+@router.get("/machines/{machien_id}", response_model=machineSchema)
+def get_single_machine(machine_id: int, db: Session = Depends(get_db)):
+    machine = db.query(MachineModel).filter(MachineModel.machine_id == machine_id).first()
+    if not machine:
+        raise HTTPException(status_code=404, detail="Machine not found")
+    return machine
 
 
 
@@ -33,20 +33,6 @@ def get_machines(db: Session = Depends(get_db)):
 #     return new_tea
 
 
-
-# @router.put("/teas/{tea_id}", response_model=TeaSchema)
-# def update_tea(tea_id: int, tea: TeaSchema, db: Session = Depends(get_db)):
-#     db_tea = db.query(TeaModel).filter(TeaModel.id == tea_id).first()
-#     if not db_tea:
-#         raise HTTPException(status_code=404, detail="Tea not found")
-
-#     tea_data = tea.dict(exclude_unset=True)  # Only update the fields provided
-#     for key, value in tea_data.items():
-#         setattr(db_tea, key, value)
-
-#     db.commit()  # Save changes
-#     db.refresh(db_tea)  # Refresh to get updated data
-#     return db_tea
 
 
 
