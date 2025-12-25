@@ -61,5 +61,14 @@ this is to analise that the correlation between the tempreature and error with t
 ### ERD
 ![EDR](https://i.imgur.com/ZWApFDj.png)
 
+### Future Enhancements:
+- Perform more calculations
+- Add Pi charts
+- Add new sensors
+
+
+### FrontEnd Repository:
+https://github.com/ArwaAloraibi/digital-twin-frontend-/
+
 
 
