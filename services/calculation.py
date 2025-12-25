@@ -51,9 +51,21 @@ class Calculation:
         error = min(max(sensor.error_rate_pct / 100, 0), 1)
         
         efficiency =  1 - (0.5 * temperature + 0.5 * error)
+        efficiency_pct = round(efficiency * 100, 1)
 
-        return round(efficiency * 100, 1)    
-    
+        if efficiency_pct >= 80:
+             status = "High"
+        elif efficiency_pct >= 60:
+              status = "Medium"
+        else:
+              status = "Low"
+
+
+        sensor.efficiency_rate_pct = efficiency_pct
+        sensor.efficiency_status = status
+
+        return efficiency_pct
+            
 
     def efficiency_temperature_error_correlation(sensor_list):
         predicted_eff = []
