@@ -16,7 +16,7 @@ def create_user(user: UserSchema, db: Session = Depends(get_db)):
     if existing_user:
         raise HTTPException(status_code=400, detail="Username already exists")
 
-    new_user = UserModel(username=user.username, password=user.password)
+    new_user = UserModel(username=user.username, password_hash=user.password)
     # Use the set_password method to hash the password
     new_user.set_password(user.password)
 
@@ -24,7 +24,12 @@ def create_user(user: UserSchema, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(new_user)
 
-    return new_user
+    token = new_user.generate_token()
+    return {
+        "token": token,
+        "message": "Registration successful",
+        "username": new_user.username
+    }
 
 @router.post("/login", response_model=UserToken)
 def login(user: UserLogin, db: Session = Depends(get_db)):
@@ -40,4 +45,4 @@ def login(user: UserLogin, db: Session = Depends(get_db)):
     token = db_user.generate_token()
 
     # Return token and a success message
-    return {"token": token, "message": "Login successful"}
+    return {"token": token, "message": "Login successful",  "username": db_user.username}

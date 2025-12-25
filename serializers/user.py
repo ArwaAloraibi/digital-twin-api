@@ -24,6 +24,7 @@ class UserLogin(BaseModel):
 class UserToken(BaseModel):
     token: str  # JWT token generated upon successful login
     message: str  # Success message
+    username: str
 
     class Config:
         orm_mode = True

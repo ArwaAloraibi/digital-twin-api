@@ -16,7 +16,7 @@ def get_machines(db: Session = Depends(get_db)):
 
 
 
-@router.get("/machines/{machien_id}", response_model=machineSchema)
+@router.get("/machines/{machine_id}", response_model=machineSchema)
 def get_single_machine(machine_id: int, db: Session = Depends(get_db)):
     machine = db.query(MachineModel).filter(MachineModel.machine_id == machine_id).first()
     if not machine:
