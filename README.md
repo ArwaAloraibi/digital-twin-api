@@ -54,6 +54,11 @@ calculates machine risk and failure indicators, and generates alerts when operat
 - Whether errors correlate with temperature or latency</br>
 - Whether the machine is degrading over time</br>
 
+### ↳ Efficiency correlation (model vs reality):
+this is to analise that the correlation between the tempreature and error with the efficincy is weak and these two attributes doesn't affect the system's efficiency that much
+
+
 ### ERD
 ![EDR](https://i.imgur.com/zRsBSwE.png)
+
 
