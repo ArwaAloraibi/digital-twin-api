@@ -59,6 +59,7 @@ this is to analise that the correlation between the tempreature and error with t
 
 
 ### ERD
-![EDR](https://i.imgur.com/zRsBSwE.png)
+![EDR](https://i.imgur.com/ZWApFDj.png)
+
 
 
