@@ -16,16 +16,16 @@ calculates machine risk and failure indicators, and generates alerts when operat
 ### Classes:
 <strong> Machine </strong>–> Represents a single machine, stores sensor data and history.</br>
 
-<strong>Calculation</strong> –> Performs calculations for risk level, failure probability and efficiency (maybe even the engine's current health )</br>
+<strong>Calculation</strong> –> Performs calculations for error rate, efficiency, temperature and power consumed by the machine
 
-<strong>DigitalTwin</strong> –> main class to manage streaming, alerts, and calls to Calculation</br>
+<strong>DigitalTwin</strong> –> main class to manage streaming, alerts, and calls the Calculation</br>
 
 ### WorkFlow:
 
 1.	Every 2–3 seconds, when the DigitalTwin receives a new row:</br>
-2.	Update the engine object (Engine / DigitalTwin)</br>
+2.	Update the engine object (Machine/ Digital Twin)</br>
 3.	Insert the new sensor reading into the SQL table (sensor_data)</br>
-4.	Calculate risk / alerts</br>
+4.	Calculate error rate, efficiency and trigger alerts</br>
 5.	Send results to frontend</br>
 
 ### Benefits:
@@ -33,26 +33,6 @@ calculates machine risk and failure indicators, and generates alerts when operat
 ⦁	Maintains full historical data for querying previous states.</br>
 ⦁	Provides realistic simulation of real-time machine monitoring.</br>
 
-### entities:
-
-#### User:
-id</br>
-name</br>
-password</br>
-
-
-#### Machine:
-machien_id</br>
-status</br>
-
-
-#### SensorData:
-machine_id</br>
-temperature             float </br>
-power_consumption_kw    float</br>
-network_latency_ms      float</br>
-error_rate_pct          float</br>
-efficiency_status       String           Low/Medium/High</br>
 
 #### The machine is: A network‑connected industrial machine inside a smart factory(CNC Milling Machine)
 
@@ -76,3 +56,4 @@ efficiency_status       String           Low/Medium/High</br>
 
 ### ERD
 ![EDR](https://i.imgur.com/zRsBSwE.png)
+
