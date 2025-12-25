@@ -10,3 +10,5 @@ class SensorDataSchema(BaseModel):
 
     class Config:
         orm_mode = True
+
+

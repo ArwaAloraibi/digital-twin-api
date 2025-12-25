@@ -6,6 +6,7 @@ from config.environment import db_URI
 from sqlalchemy import create_engine
 
 engine = create_engine(db_URI)
+
 SessionLocal = sessionmaker(bind=engine)
 
 try:
@@ -17,11 +18,9 @@ try:
     print("Seeding the database...")
     db = SessionLocal()
 
-    # Seed teas first, as comments depend on them
     db.add_all(machines_list)
     db.commit()
 
-    # Seed comments after teas
     db.add_all(sensor_data_list)
     db.commit()
     db.close()

@@ -4,6 +4,8 @@ from models.sensor_data import SensorDataModel
 # Seed machine(s)
 machines_list = [
     MachineModel(machine_id=15, status="Active"),
+    MachineModel(machine_id=10, status="Active"),
+
 ]
 
 
@@ -156,4 +158,32 @@ sensor_data_list = [
     SensorDataModel(machine_id=15, status="Maintenance", temperature=75.62683543, power_consumption_kw=8.535852611, network_latency_ms=16.89508325, error_rate_pct=0.116986513, efficiency_status="Medium"),
     SensorDataModel(machine_id=15, status="Active", temperature=34.27096747, power_consumption_kw=7.79228683, network_latency_ms=25.89388523, error_rate_pct=4.410962759, efficiency_status="Medium"),
     SensorDataModel(machine_id=15, status="Active", temperature=75.77397418, power_consumption_kw=2.814795437, network_latency_ms=28.18783109, error_rate_pct=4.002785007, efficiency_status="Low"),
+
+
+
+
+    SensorDataModel(machine_id=10, status="Active", temperature=79.22289812, power_consumption_kw=7.307806195, network_latency_ms=35.16011881, error_rate_pct=3.695514164, efficiency_status="Medium"),
+    SensorDataModel(machine_id=10, status="Idle", temperature=61.49453361, power_consumption_kw=6.767762084, network_latency_ms=48.98951666, error_rate_pct=0.154305818, efficiency_status="High"),
+    SensorDataModel(machine_id=10, status="Active", temperature=40.40145725, power_consumption_kw=8.99145874, network_latency_ms=41.39365761, error_rate_pct=8.374542867, efficiency_status="Low"),
+    SensorDataModel(machine_id=10, status="Maintenance", temperature=63.17556926, power_consumption_kw=8.674975334, network_latency_ms=34.49192838, error_rate_pct=9.78052943, efficiency_status="Low"),
+    SensorDataModel(machine_id=10, status="Active", temperature=60.53486571, power_consumption_kw=5.207269471, network_latency_ms=11.31276045, error_rate_pct=11.09873951, efficiency_status="Low"),
+    SensorDataModel(machine_id=10, status="Active", temperature=87.30445218, power_consumption_kw=3.673685473, network_latency_ms=15.27326947, error_rate_pct=1.241999294, efficiency_status="Low"),
+    SensorDataModel(machine_id=10, status="Maintenance", temperature=49.63826308, power_consumption_kw=2.146795938, network_latency_ms=16.33005879, error_rate_pct=1.127844707, efficiency_status="Low"),
+    SensorDataModel(machine_id=10, status="Active", temperature=61.26289861, power_consumption_kw=4.554294416, network_latency_ms=28.99710688, error_rate_pct=7.816778665, efficiency_status="Low"),
+    SensorDataModel(machine_id=10, status="Idle", temperature=52.21503251, power_consumption_kw=5.103349513, network_latency_ms=11.32272569, error_rate_pct=11.25786433, efficiency_status="Low"),
+    SensorDataModel(machine_id=10, status="Active", temperature=62.94026449, power_consumption_kw=6.683944072, network_latency_ms=24.34759824, error_rate_pct=7.276375771, efficiency_status="Low"),
+    SensorDataModel(machine_id=10, status="Active", temperature=88.04029641, power_consumption_kw=8.350080944, network_latency_ms=3.601748419, error_rate_pct=2.637214211, efficiency_status="Medium"),
+    SensorDataModel(machine_id=10, status="Active", temperature=59.78137932, power_consumption_kw=4.254801855, network_latency_ms=27.6038345, error_rate_pct=1.489844624, efficiency_status="Medium"),
+    SensorDataModel(machine_id=10, status="Active", temperature=30.24944707, power_consumption_kw=7.12061798, network_latency_ms=1.798317377, error_rate_pct=9.148926973, efficiency_status="Low"),
+    SensorDataModel(machine_id=10, status="Active", temperature=89.09653902, power_consumption_kw=8.00214462, network_latency_ms=45.40987569, error_rate_pct=11.3448872, efficiency_status="Low"),
+    SensorDataModel(machine_id=10, status="Maintenance", temperature=75.62683543, power_consumption_kw=8.535852611, network_latency_ms=16.89508325, error_rate_pct=0.116986513, efficiency_status="Medium"),
+    SensorDataModel(machine_id=10, status="Active", temperature=34.27096747, power_consumption_kw=7.79228683, network_latency_ms=25.89388523, error_rate_pct=4.410962759, efficiency_status="Medium"),
+    SensorDataModel(machine_id=10, status="Active", temperature=75.77397418, power_consumption_kw=2.814795437, network_latency_ms=28.18783109, error_rate_pct=4.002785007, efficiency_status="Low")
+
+
+
+
+
+
+
     ]
